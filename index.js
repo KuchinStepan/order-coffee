@@ -98,7 +98,7 @@ function fillTable() {
 const modal = document.querySelector('.modal');
 const submitButton = document.querySelector('.submit-button');
 submitButton.onclick = function () {
-    modal.querySelector('.modal-window > p').innerText = `Вы заказали ${fieldsetCount} ${getDeclension()}`;
+    modal.querySelector('.modal-content > p').innerText = `Вы заказали ${fieldsetCount} ${getDeclension()}`;
     fillTable();
     modal.style.display = 'flex';
     return false;

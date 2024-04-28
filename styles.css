@@ -68,14 +68,26 @@
     background-color: white;
     border-radius: 10px;
     width: 500px;
-    max-height: 500px;
+    max-height: 600px;
     position: relative;
-    padding: 40px;
+    padding: 10px 40px 40px 40px;
 }
 
 .modal-window > h2 {
     text-align: center;
 }
+
+.modal-window .close-button {
+    margin-top: 20px;
+}
+
+.modal-content {
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 10px;
+}
+
+
 
 thead {
     font-weight: bold;
