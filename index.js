@@ -56,11 +56,50 @@ function getDeclension() {
     return 'напитков'
 }
 
+function getMilkType(value) {
+    switch (value) {
+        case 'usual': return 'обычное';
+        case 'no-fat': return 'обезжиренное';
+        case 'soy': return 'соевое';
+        case 'coconut': return 'кокосовое';
+    }
+}
+
+function getAddition(value) {
+    switch (value) {
+        case 'whipped cream': return 'взбитые сливки';
+        case 'marshmallow': return 'зефирки';
+        case 'chocolate': return 'шоколад';
+        case 'cinnamon': return 'корица';
+    }
+}
+
+
+const tableBody = document.querySelector('table tbody');
+
+function fillTable() {
+    for (const fieldset of document.querySelectorAll('fieldset')) {
+        const row = tableBody.insertRow(-1);
+        const drinkSelect = fieldset.querySelector('select')
+        row.insertCell(0).textContent = drinkSelect.selectedOptions[0].textContent;
+        const milkSelector = fieldset.querySelector('input[type="radio"]:checked');
+        row.insertCell(1).textContent = getMilkType(milkSelector.value);
+
+        let additives = [];
+        for (const checkbox of fieldset.querySelectorAll('input[type="checkbox"]:checked')) {
+            additives.push(getAddition(checkbox.value));
+        }
+        row.insertCell(2).textContent = additives.join(', ');
+    }
+
+}
+
 
 const modal = document.querySelector('.modal');
 const submitButton = document.querySelector('.submit-button');
 submitButton.onclick = function () {
     modal.querySelector('.modal-window > p').innerText = `Вы заказали ${fieldsetCount} ${getDeclension()}`;
+    fillTable();
     modal.style.display = 'flex';
     return false;
 }
@@ -68,5 +107,6 @@ submitButton.onclick = function () {
 const closeModalButton = document.querySelector('.close-button');
 closeModalButton.onclick = function () {
     modal.style.display = 'none';
+    tableBody.innerHTML = '';
     return false;
 }
