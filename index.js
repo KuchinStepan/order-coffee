@@ -7,7 +7,12 @@ let fieldsetCount = 1;
 function renumberFieldSets() {
     let i = 1;
     for (const fieldset of document.querySelectorAll('fieldset')) {
-        fieldset.querySelector('h4').innerText = `Напиток №${i++}`;
+        fieldset.querySelector('h4').innerText = `Напиток №${i}`;
+        fieldset.id = `fieldset${i}`;
+        for (const checkbox of fieldset.querySelectorAll('.checkbox-field > input[type="radio"]')) {
+            checkbox.name = `milk${i}`;
+        }
+        i++;
     }
 }
 
