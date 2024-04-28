@@ -43,5 +43,30 @@ function addNewFieldset() {
 
 addButton.onclick = addNewFieldset;
 
+function getDeclension() {
+    if (10 < fieldsetCount % 100 && fieldsetCount % 100 < 15) {
+        return 'напитков';
+    }
+    if (fieldsetCount % 10 === 1) {
+        return 'напиток';
+    }
+    if (2 <= fieldsetCount % 10 && fieldsetCount % 10 <= 4) {
+        return 'напитка';
+    }
+    return 'напитков'
+}
 
 
+const modal = document.querySelector('.modal');
+const submitButton = document.querySelector('.submit-button');
+submitButton.onclick = function () {
+    modal.querySelector('.modal-window > p').innerText = `Вы заказали ${fieldsetCount} ${getDeclension()}`;
+    modal.style.display = 'flex';
+    return false;
+}
+
+const closeModalButton = document.querySelector('.close-button');
+closeModalButton.onclick = function () {
+    modal.style.display = 'none';
+    return false;
+}
