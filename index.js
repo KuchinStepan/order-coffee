@@ -1,4 +1,4 @@
-let fieldset = document.querySelector('.beverage');
+const fieldset = document.querySelector('fieldset');
 const addButton = document.querySelector('.add-button');
 
 fieldset.id = 'fieldset1';
